@@ -2,7 +2,7 @@
 
 ### **1. What is statically and dynamically typed programming language?**
 
-### Statically Typed Language: In Static Typing, type checking is performed during compile time. It means that the type of a variable is known at compile time. For some languages, the programmer must specify what type each variable is (e.g C, C++, Java), other languages offer some form of type inference(e.g. Scala, Haskell).
+#### Statically Typed Language: In Static Typing, type checking is performed during compile time. It means that the type of a variable is known at compile time. For some languages, the programmer must specify what type each variable is (e.g C, C++, Java), other languages offer some form of type inference(e.g. Scala, Haskell).
 
 ```
 String a;
