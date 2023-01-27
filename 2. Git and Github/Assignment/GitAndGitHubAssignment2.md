@@ -1,4 +1,4 @@
-# Assignment 3
+# Assignment (Git and GitHub Part II)
 
 ### **1. How to check if git is available on your system ?**
 

@@ -1,4 +1,4 @@
-# Assignment 2
+# Assignment (Git and GitHub)
 
 ### **1. What is Git ?**
 
