@@ -118,7 +118,7 @@ if (condition) {
 | while loop is entry controlled loop.                                       | do-while loop is exit controlled loop.                                  |
 | while(condition){ statement(s); }                                          | do { statement(s); } while(condition);                                  |
 
-### **8. Write a program to print numbers from 1 to 10**
+### **9. Write a program to print numbers from 1 to 10**
 
 ```
 public class PrintNumbers {
