@@ -22,13 +22,12 @@ class Umpire {
     protected int rangeMin;
     protected int rangeMax;
 
-    protected int getGuessedNumber() {
+    protected void starGame() {
         Guesser g = new Guesser();
         guessedNumber = g.guessNumber();
         rangeMin = g.min;
         rangeMax = g.max;
         System.out.println("Guesser has guessed the number and informed umpire...");
-        return guessedNumber;
     }
 
     protected boolean checkGuess(int playerGuessedNumber) {
@@ -54,6 +53,7 @@ public class GuesserGame {
         int numOfPlayers;
         boolean hasWon = false;
         Umpire umpire = new Umpire();
+        umpire.starGame();
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter Number of Players : ");
         numOfPlayers = sc.nextInt();
