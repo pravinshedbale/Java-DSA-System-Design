@@ -1,21 +1,32 @@
 import java.util.Scanner;
 
 class Guesser {
+    int min = 0;
+    int max = 0;
+    protected int guessedNumber;
+
     protected int guessNumber() {
-        int min = 0;
-        int max = 10;
-        int guessedNumber = (int) (Math.random() * (max - min + 1) + min);
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter Range (Min) : ");
+        min = sc.nextInt();
+        System.out.print("Enter Range (Max) : ");
+        max = sc.nextInt();
+        guessedNumber = (int) (Math.random() * (max - min + 1) + min);
         return guessedNumber;
     }
 }
 
 class Umpire {
     private int guessedNumber;
+    protected int rangeMin;
+    protected int rangeMax;
 
     protected int getGuessedNumber() {
         Guesser g = new Guesser();
         guessedNumber = g.guessNumber();
-        System.out.println("Guesses has guessed the number and informed umpire...");
+        rangeMin = g.min;
+        rangeMax = g.max;
+        System.out.println("Guesser has guessed the number and informed umpire...");
         return guessedNumber;
     }
 
@@ -42,11 +53,13 @@ public class GuesserGame {
         int numOfPlayers;
         boolean hasWon = false;
         Umpire umpire = new Umpire();
-        System.out.println("Umpire Guessed Number " + umpire.getGuessedNumber());
+        System.out.println("Guessed Number " + umpire.getGuessedNumber()); // Just to check game logic working properly
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter Number of Players : ");
         numOfPlayers = sc.nextInt();
         Player[] players = new Player[numOfPlayers];
+
+        System.out.println("Guess Number between " + umpire.rangeMin + " and " + umpire.rangeMax);
         for (int i = 0; i < numOfPlayers; i++) {
             players[i] = new Player();
             System.out.print("Enter Guess by Player " + (i + 1) + " : ");
@@ -62,6 +75,5 @@ public class GuesserGame {
         if (!hasWon) {
             System.out.println("Game Lost Please Try Again");
         }
-        sc.close();
     }
 }
