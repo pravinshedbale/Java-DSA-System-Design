@@ -49,11 +49,8 @@ public class GuesserGame {
         Player[] players = new Player[numOfPlayers];
         for (int i = 0; i < numOfPlayers; i++) {
             players[i] = new Player();
-        }
-        for (int i = 0; i < numOfPlayers; i++) {
             System.out.print("Enter Guess by Player " + (i + 1) + " : ");
             players[i].attemptGuess();
-
         }
 
         for (int i = 0; i < numOfPlayers; i++) {
