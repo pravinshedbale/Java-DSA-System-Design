@@ -11,7 +11,8 @@ class Guesser {
         min = sc.nextInt();
         System.out.print("Enter Range (Max) : ");
         max = sc.nextInt();
-        guessedNumber = (int) (Math.random() * (max - min + 1) + min);
+        System.out.print("Guesser Kindly guess the number : ");
+        guessedNumber = sc.nextInt();
         return guessedNumber;
     }
 }
@@ -53,7 +54,6 @@ public class GuesserGame {
         int numOfPlayers;
         boolean hasWon = false;
         Umpire umpire = new Umpire();
-        System.out.println("Guessed Number " + umpire.getGuessedNumber()); // Just to check game logic working properly
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter Number of Players : ");
         numOfPlayers = sc.nextInt();
