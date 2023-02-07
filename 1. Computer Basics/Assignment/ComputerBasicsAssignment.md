@@ -44,7 +44,7 @@
 
 <br/>
 
-### **5. What are input devices ?**
+### **8. What are input devices ?**
 
 #### Input devices are the hardwares which are used to provide input to the computer system.
 
