@@ -2,10 +2,10 @@ class ThreadDemo implements Runnable {
     @Override
     public void run() {
         for (int i = 0; i < 5; i++) {
-            System.out.println("Focus is important " + i);
             try {
+                System.out.println("Focus is important " + i);
                 Thread.sleep(1000);
-            } catch (InterruptedException e) {
+            } catch (Exception e) {
                 System.out.println("Thread is interrupted");
             }
         }
