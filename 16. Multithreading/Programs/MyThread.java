@@ -1,9 +1,7 @@
-import java.util.Scanner;
 
 class Thread1 extends Thread {
     public void run() {
         System.out.println("Thread 1 started...");
-        int n = new Scanner(System.in).nextInt();
         for (int i = 1; i <= 10; i++) {
             System.out.println("Thread1 : " + i);
         }
