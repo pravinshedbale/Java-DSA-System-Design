@@ -4,5 +4,6 @@
     "15. Exception Handling/Programs",
     "14. Interface and Lambda Exp/Programs",
     ""
-  ]
+  ],
+  "java.debug.settings.onBuildFailureProceed": true
 }
