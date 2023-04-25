@@ -1,3 +1,6 @@
 {
-  "java.project.sourcePaths": ["Course Projects/2. Hospital Management"]
+  "java.project.sourcePaths": [
+    "DSA/1. Complexity Analysis and Array/Programs",
+    "DSA/2. Searching, Sorting and Bit Manipulation/Programs"
+  ]
 }
