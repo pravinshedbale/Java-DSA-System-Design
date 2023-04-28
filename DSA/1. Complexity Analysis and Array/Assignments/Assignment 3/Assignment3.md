@@ -30,14 +30,13 @@ int sum = n * (n + 1) / 2;
 ### **2. Find the value of T(2) for the recurrence relation T(n) = 3T(n-1) + 12n, given that T(0) = 5**
 
 ```
-To find the value of T(2) for the recurrence relation T(n) = 3T(n-1) + 12n, we can use the formula recursively:
+To find the value of T(2) for the given recurrence relation, we need to work our way up from the initial condition T(0) = 5 using the recurrence relation.
 
-T(2) = 3T(1) + 12(2)
-T(2) = 3[3T(0) + 12(1)] + 12(2) (substituting T(1) using the recurrence relation)
-T(2) = 3[3(5) + 12(1)] + 12(2) (substituting T(0))
-T(2) = 63
+T(0) = 5 (given)
+T(1) = 3T(0) + 12(1) = 3(5) + 12(1) = 15 + 12 = 27
+T(2) = 3T(1) + 12(2) = 3(27) + 12(2) = 81 + 24 = 105
 
-Therefore, the value of T(2) for the recurrence relation T(n) = 3T(n-1) + 12n, given that T(0) = 5 is 63.
+Therefore, the value of T(2) is 105.
 ```
 
 <br/>
@@ -62,85 +61,216 @@ Since T(1) is a constant, we can say that the time complexity of T(n) is O(n).
 
 ### **4. Given recurrence relation : T(n) = 16T(n/4) + n2logn, find the complexity ot this using the master theorem**
 
-#### Two ways of implementing thread in java are :
-
-1. Extending Thread class.
-2. Implementing Runnable interface
-
-<br/>
-
-### **5. What is the difference between thread and process?**
-
-| Thread                                                                             | Process                                                                                                                                                                      |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Process means any program is in execution.                                         | Thread means a segment of a process.                                                                                                                                         |
-| The process takes more time to terminate.                                          | The thread takes less time to terminate.                                                                                                                                     |
-| It takes more time for creation.                                                   | It takes less time for creation.                                                                                                                                             |
-| It also takes more time for context switching.                                     | It takes less time for context switching.                                                                                                                                    |
-| The process is less efficient in terms of communication.                           | Thread is more efficient in terms of communication.                                                                                                                          |
-| Multiprogramming holds the concepts of multi-process.                              | We don’t need multi programs in action for multiple threads because a single process consists of multiple threads.                                                           |
-| The process is isolated.                                                           | Threads share memory.                                                                                                                                                        |
-| The process is called the heavyweight process.                                     | A Thread is lightweight as each thread in a process shares code, data, and resources.                                                                                        |
-| Process switching uses an interface in an operating system.                        | Thread switching does not require calling an operating system and causes an interrupt to the kernel.                                                                         |
-| If one process is blocked then it will not affect the execution of other processes | If a user-level thread is blocked, then all other user-level threads are blocked.                                                                                            |
-| The process has its own Process Control Block, Stack, and Address Space.           | Thread has Parents’ PCB, its own Thread Control Block, and Stack and common Address space.                                                                                   |
-| Changes to the parent process do not affect child processes.                       | Since all threads of the same process share address space and other resources so any changes to the main thread may affect the behavior of the other threads of the process. |
-| A system call is involved in it.                                                   | No system call is involved, it is created using APIs.                                                                                                                        |
-| The process does not share data with each other.                                   | Threads share data with each other.                                                                                                                                          |
-
-<br/>
-
-### **6. How can we create daemon threads?**
-
-#### Daemon thread in Java is a low-priority thread that runs in the background to perform tasks such as garbage collection. Daemon thread in Java is also a service provider thread that provides services to the user thread.
-
-#### We can create daemon threads using following method
-
 ```
-public void setDaemon(boolean status)
-```
+From the given recurrence relation we can obtain the value of different parameters such as a, b, p and k
 
-#### is used to mark the current thread as daemon thread or user thread.
+The relation is : T(n) = 16T(n/4) + n2logn
 
-#### Example
-
-```
-public class TestDaemonThread1 extends Thread{
- public void run(){
-  if(Thread.currentThread().isDaemon()){//checking for daemon thread
-   System.out.println("daemon thread work");
-  }
-  else{
-  System.out.println("user thread work");
- }
- }
- public static void main(String[] args){
-  TestDaemonThread1 t1=new TestDaemonThread1();//creating thread
-  TestDaemonThread1 t2=new TestDaemonThread1();
-  TestDaemonThread1 t3=new TestDaemonThread1();
-
-  t1.setDaemon(true);//now t1 is daemon thread
-
-  t1.start();//starting threads
-  t2.start();
-  t3.start();
- }
-}
-```
-
-#### Output
-
-```
-daemon thread work
-user thread work
-user thread work
+Here a = 16,
+b = 4,
+k = 2,
+p = 1
+bk = 42 = 16
+here a = bk
+Also p > -1
+Hence T(n) = θ(nlogab*logp+1n)
+Therefore T(n) = θ(nlog164*log1+1n) = θ(n1/2log2n)
 ```
 
 <br/>
 
-### **7. What are the wait() and sleep() methods?**
+### **5. Solve the following recurrence relation using recursion tree method T(n) = 2T(n/2) + n?**
 
-1. Sleep() :
-   The Sleep () method is related to the Thread class that is used to stop the execution of the current Thread for few seconds. The Sleep () method takes the sleeping time in milliseconds. The monitor's ownership is not lost when we use the Sleep () method and start the execution again from where it stops. In simple words, the Sleep() method is responsible for sending the current Thread into the "Non Runnable" state.
+1. Draw a recursion tree based on the given recurrence relation, The given recurrence relation shows
 
-2. Wait() : The Wait() method is related to the Object class. The Wait() method is responsible for sending the calling thread into the waiting state. The Thread remains in the waiting state until another thread doesn't invoke the notify() or notifyAll() method for that object. The Thread resumes the execution after obtaining the ownership of the monitor.
+- A problem of size n will get divided into 2 sub-problems of size n/2.
+- Then, each sub-problem of size n/2 will get divided into 2 sub-problems of size n/4 and so on.
+- At the bottom most layer, the size of sub-problems will reduce to 1.
+
+#### This is illustrated through following recursion tree
+
+```
+                T(n)
+              /     \
+             /       \
+            /         \
+        T(n/2)        T(n/2)
+         / \           /  \
+        /   \         /    \
+       /     \       /      \
+   T(n/4)   T(n/4)  T(n/4)  T(n/4)
+                .
+                .
+                .
+```
+
+#### The given recurrence relationn shows
+
+- The cost of dividing a problem of size n into its 2 sub-problems and then combining its solution is n.
+- The cost of dividing a problem of size n/2 into its 2 sub-problems and then combining its solution is n/2 and so on.
+
+#### This is illustrated through following recursion tree where each node represents the cost of the corresponding sub-problem-
+
+<br/>
+
+```
+                 n
+              /     \
+             /       \
+            /         \
+          n/2          n/2
+         / \           /  \
+        /   \         /    \
+       /     \       /      \
+      n/4   n/4      n/4  n/4
+                .
+                .
+                .
+```
+
+2. Determine cost of each level
+
+- Cost of level-0 = n
+- Cost of level-1 = n/2 + n/2 = n
+- Cost of level-2 = n/4 + n/4 + n/4 + n/4 = n and so on.
+
+3. Determine total number of levels in the recursion tree-
+
+- Size of sub-problem at level-0 = n/20
+- Size of sub-problem at level-1 = n/21
+- Size of sub-problem at level-2 = n/22
+
+```
+Continuing in similar manner, we have-
+
+Size of sub-problem at level-i = n/2i
+
+Suppose at level-x (last level), size of sub-problem becomes 1. Then-
+
+n / 2x = 1
+
+2x = n
+
+Taking log on both sides, we get-
+
+xlog2 = logn
+
+x = log2n
+
+∴ Total number of levels in the recursion tree = log2n + 1
+```
+
+4. Determine number of nodes in the last level-
+
+- Level-0 has 20 nodes i.e. 1 node
+- Level-1 has 21 nodes i.e. 2 nodes
+- Level-2 has 22 nodes i.e. 4 nodes
+
+Continuing in similar manner, we have-
+
+```
+Level-log2n has 2log2n nodes i.e. n nodes
+```
+
+5. Determine cost of last level-
+
+```
+Cost of last level = n x T(1) = θ(n)
+
+```
+
+6. Add costs of all the levels of the recursion tree and simplify the expression so obtained in terms of asymptotic notation-Add costs of all the levels of the recursion tree and simplify the expression so obtained in terms of asymptotic notation-
+
+```
+T(n) = {n + n + n +....} + θ(n)
+= n x log2n + θ (n)
+= nlog2n + θ (n)
+= θ (nlog2n)
+```
+
+### **6. T(n) = 2T(n/2) + K, solve using recurrence tree method**
+
+1. Draw a recursive tree
+
+```
+                T(n)
+              /     \
+             /       \
+            /         \
+        T(n/2)        T(n/2)
+         / \           /  \
+        /   \         /    \
+       /     \       /      \
+   T(n/4)   T(n/4)  T(n/4)  T(n/4)
+                .
+                .
+                .
+```
+
+2.  Calculate the work done or cost at each level and count total no of levels in recursion tree
+
+```
+
+                 n                  K = 2^0K
+              /     \
+             /       \
+            /         \
+          n/2          n/2          K+K = 2^1K
+         / \           /  \
+        /   \         /    \
+       /     \       /      \
+      n/4   n/4      n/4  n/4       K+K+K+K = 2^2K
+                .
+                .
+                .
+
+```
+
+- Count the total number of levels
+- Choose the longest path from root node to leaf node
+
+```
+ n/2^0 → n/2^1 → n/2^2 → ……… → n/2k
+
+```
+
+- Size of problem at last level = n/2k
+- At last level size of problem becomes 1
+
+```
+n/2^k = 1
+2^k = n
+k = log2(n)
+```
+
+- Total no of levels in recursive tree = k +1 = log2(n) + 1
+
+3. Count total number of nodes in the last level and calculate cost of last level
+
+```
+No. of nodes at level 0 = 2^0 = 1
+
+No. of nodes at level 1 = 2^1 = 2
+
+………………………………………………………
+
+No. of nodes at level log2(n) = 2^(log2(n)) = n^(log2(2)) = n
+
+Cost of sub problems at level log2(n) (last level) = nxT(1) = nx1 = n
+```
+
+4. Sum up the cost all the levels in recursive tree
+
+```
+T(n) = K + 2K + 4K + —- + (no. of levels-1) times + last level cost
+
+= K + 2K + 4K + —- + log2(n) times + Θ(n)
+
+= K(1 + 2 + 4 + —- + log2(n) times) + Θ(n)
+
+1 + 2 + 4 + —– + log2(n) times –> 2^0 + 2^1 + 2^2 + —– + log2(n) times –> Geometric Progression(G.P.)
+
+= c(n) + Θ(n)
+```
+
+#### Hence, T(n) = Θ(n)
