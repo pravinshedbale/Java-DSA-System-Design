@@ -1,9 +1,10 @@
 {
   "java.project.sourcePaths": [
     "DSA/3. Recursion/Assignments",
+    "DSA/2. Searching, Sorting and Bit Manipulation/Assignments/Assignment 3",
     "DSA/2. Searching, Sorting and Bit Manipulation/Assignments/Assignment 2",
     "DSA/2. Searching, Sorting and Bit Manipulation/Assignments/Assignment 1",
     "19. Important API's and Annotation/Programs",
-    "DSA/2. Searching, Sorting and Bit Manipulation/Assignments/Assignment 3"
+    "DSA/4. Backtracking/Programs"
   ]
 }
